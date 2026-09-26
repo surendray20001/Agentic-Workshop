@@ -33,3 +33,16 @@ context: []
 - **low, rejected (false)** — flagged lack of a `--db-path` CLI flag / collision guard against an existing `app.db`. This contradicts the spec itself: rerunning must reset to the same state against the fixed `app.db` path; `load_seed(db_path=...)` is already parametrized for tests.
 - **medium, deferred** — no FK constraint or cross-CSV referential-integrity check between `tickets.customer_id` and `customers.customer_id`, plus a table-creation-order note in case an FK is added later. Real idea, not required by CAP-1's success criteria, and not caused by this change — logged in `deferred-work.md`.
 - **false, out of scope** — reviewer noted `.env.example` shows deleted in the working tree. Predates this story's changes (present before `load_seed.py` was written) and the human already decided during context-gathering to leave it as-is; not part of this diff.
+
+### bmad-code-review pass (branch vs main)
+
+- **low, patched** — `_read_csv` opened files with the platform default encoding instead of `encoding="utf-8"`; a latent portability gap (currently unreachable — seed CSVs are pure ASCII). Fixed.
+- **low, patched** — `load_seed()` had no docstring, and the CLI entry point's `print` gave no row-count confirmation. Added a docstring and row counts to the printed message.
+- **low, rejected** — no index on `tickets.customer_id`. 24 rows, full scan is free; unrequested complexity for CAP-1's scope.
+- **false, rejected** — hardcoded row counts/IDs in tests "silently" couple to seed CSVs. A failing assertion is a loud pytest failure, not silent; `seed/*.csv` is documented read-only, so pinning to its values is intentional.
+- **low, rejected** — no validation of malformed/missing CSV rows (non-numeric `open_tickets`, missing headers). Same reasoning as the earlier pass: static, read-only, already-valid fixtures; fix would add guards beyond CAP-1's scope.
+- **false, rejected** — `sqlite3.connect(db_path)` would fail if `db_path`'s parent directory doesn't exist. Unreachable: the module default always resolves inside the repo, and no caller (test or CLI) passes a path with a missing parent dir.
+- **false, rejected** — CAP-2 is unimplemented and not logged as "not yet built." This story's own frozen Intent explicitly scopes only CAP-1 — an already-surfaced, deliberate choice, not a silent scope cut.
+- **rejected (spec-edit)** — Open Question in `SPEC.md` (route↔category pairing) has no named owner/follow-up. Fix would mean editing `SPEC.md`, out of bounds for a code review.
+- **false, rejected** — `.env.example` deletion is undertracked. Not part of this diff (`git diff main...HEAD` covers commits only; the deletion is an unrelated, pre-existing uncommitted change).
+- **low, rejected** — idempotency test asserts row counts, not full content equality. Content equality is guaranteed by construction (drop+recreate from the same static CSVs every run); a theoretical nitpick, not a real risk.

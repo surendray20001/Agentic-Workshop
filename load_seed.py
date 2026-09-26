@@ -12,11 +12,12 @@ CUSTOMERS_CSV = ROOT / "seed" / "customers.csv"
 
 
 def _read_csv(path: Path) -> list[dict]:
-    with path.open(newline="") as f:
+    with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
 
 
 def load_seed(db_path: Path = DB_PATH) -> None:
+    """Load seed/tickets.csv and seed/customers.csv into db_path, replacing any existing tables."""
     tickets = _read_csv(TICKETS_CSV)
     customers = _read_csv(CUSTOMERS_CSV)
 
@@ -57,4 +58,7 @@ def load_seed(db_path: Path = DB_PATH) -> None:
 
 if __name__ == "__main__":
     load_seed()
-    print(f"Loaded {DB_PATH}")
+    with contextlib.closing(sqlite3.connect(DB_PATH)) as conn:
+        ticket_count = conn.execute("SELECT COUNT(*) FROM tickets").fetchone()[0]
+        customer_count = conn.execute("SELECT COUNT(*) FROM customers").fetchone()[0]
+    print(f"Loaded {DB_PATH}: {ticket_count} tickets, {customer_count} customers")
