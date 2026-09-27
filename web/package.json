@@ -1,0 +1,8 @@
+{
+  "name": "expense-dashboard",
+  "private": true,
+  "description": "Static dashboard for Case Expenses. No dependencies, no server, no API keys.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

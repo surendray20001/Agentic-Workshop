@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expense Claim Review</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --text: #1b1f24; --muted: #5b6470; --border: #e2e5ea;
+    --approve-bg: #e3f4e8; --approve-fg: #17663a;
+    --flag-bg: #fdf1d8; --flag-fg: #8a5a00;
+    --reject-bg: #fbe4e4; --reject-fg: #a12525;
+    --accent: #2f5bd3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418; --surface: #1a1e24; --text: #e6e9ee; --muted: #9aa3ae; --border: #2c323b;
+      --approve-bg: #173524; --approve-fg: #7fd9a2;
+      --flag-bg: #3a2e12; --flag-fg: #f2c46b;
+      --reject-bg: #3d1c1c; --reject-fg: #f29a9a;
+      --accent: #7fa2ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.4rem; margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: .85rem; margin: 0 0 20px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .card h2 { font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 6px; }
+  .big { font-size: 1.8rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .sub { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+  .sub div { display: flex; justify-content: space-between; gap: 8px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .filters button { font: inherit; padding: 6px 12px; border-radius: 999px; cursor: pointer;
+                    border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+  .filters button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+  .badge.approve { background: var(--approve-bg); color: var(--approve-fg); }
+  .badge.flag { background: var(--flag-bg); color: var(--flag-fg); }
+  .badge.reject { background: var(--reject-bg); color: var(--reject-fg); }
+  .gate { display: block; margin-top: 4px; font-size: .75rem; color: var(--flag-fg); white-space: nowrap; }
+  .clause { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap; }
+  .line { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85rem; white-space: nowrap; }
+  .muted { color: var(--muted); }
+  .error { background: var(--reject-bg); color: var(--reject-fg); padding: 12px 16px; border-radius: 10px; }
+  td.reason { min-width: 220px; }
+  @media (max-width: 700px) { .hide-sm { display: none; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Expense claim review</h1>
+  <p class="meta" id="meta">Loading results…</p>
+
+  <section class="cards" aria-label="Summary">
+    <div class="card"><h2>Decisions</h2><div class="big" id="total">–</div><div class="sub" id="counts"></div></div>
+    <div class="card"><h2>Eval score</h2><div class="big" id="score">–</div><div class="sub" id="checks"></div></div>
+    <div class="card"><h2>Tokens</h2><div class="big" id="tokens">–</div><div class="sub" id="token-split"></div></div>
+  </section>
+
+  <div class="filters" role="group" aria-label="Filter by decision">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="approve" aria-pressed="false">Approve</button>
+    <button type="button" data-filter="flag" aria-pressed="false">Flag</button>
+    <button type="button" data-filter="reject" aria-pressed="false">Reject</button>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Line</th><th class="hide-sm">Claim</th><th class="hide-sm">Item</th>
+          <th class="num">Amount</th><th>Decision</th><th>Reason</th><th>Clause</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+  // Reasons are LLM output over claim data: untrusted. Everything is rendered
+  // with textContent, never innerHTML.
+  const fmt = new Intl.NumberFormat();
+  const money = new Intl.NumberFormat(undefined, { style: "currency", currency: "CAD" });
+  let items = [];
+
+  function el(tag, props = {}, text) {
+    const node = Object.assign(document.createElement(tag), props);
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function subRow(label, value) {
+    const row = el("div");
+    row.append(el("span", {}, label), el("span", {}, value));
+    return row;
+  }
+
+  function renderSummary(data) {
+    const s = data.summary;
+    document.getElementById("meta").textContent =
+      `${s.claims} claims · ${s.line_items} line items · exported ${new Date(data.generated_at).toLocaleString()}`;
+
+    document.getElementById("total").textContent = fmt.format(s.line_items);
+    document.getElementById("counts").replaceChildren(
+      subRow("Approve", fmt.format(s.decisions.approve)),
+      subRow("Flag", fmt.format(s.decisions.flag)),
+      subRow("Reject", fmt.format(s.decisions.reject)),
+      subRow("Awaiting sign-off (> $500)", fmt.format(s.pending_signoff)),
+    );
+
+    document.getElementById("score").textContent = s.eval.score == null ? "–" : `${s.eval.score}%`;
+    document.getElementById("checks").replaceChildren(
+      ...s.eval.checks.map(c => subRow(c.name, `${c.passed}/${c.total}`)),
+    );
+
+    document.getElementById("tokens").textContent = fmt.format(s.tokens.total);
+    document.getElementById("token-split").replaceChildren(
+      subRow("Input", fmt.format(s.tokens.input)),
+      subRow("Output", fmt.format(s.tokens.output)),
+      subRow("Claims traced", `${s.tokens.traced_claims}/${s.claims}`),
+    );
+  }
+
+  function renderRows(filter) {
+    const rows = items
+      .filter(item => filter === "all" || item.decision === filter)
+      .map(item => {
+        const tr = el("tr");
+        const decision = el("td");
+        decision.append(el("span", { className: `badge ${item.decision}` }, item.decision));
+        if (item.pending_signoff) decision.append(el("span", { className: "gate" }, "awaiting sign-off"));
+        tr.append(
+          el("td", { className: "line" }, item.line_id),
+          el("td", { className: "line hide-sm" }, item.claim_id),
+          el("td", { className: "hide-sm" }, `${item.category} · ${item.merchant}`),
+          el("td", { className: "num" }, money.format(Number(item.amount))),
+          decision,
+          item.reason ? el("td", { className: "reason" }, item.reason) : el("td", { className: "reason muted" }, "No explanation recorded"),
+          el("td", { className: "clause" }, item.clause),
+        );
+        return tr;
+      });
+    document.getElementById("rows").replaceChildren(...rows);
+  }
+
+  document.querySelectorAll("[data-filter]").forEach(button => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-filter]").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+      renderRows(button.dataset.filter);
+    });
+  });
+
+  fetch("/results.json")
+    .then(response => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      items = data.items;
+      renderSummary(data);
+      renderRows("all");
+    })
+    .catch(error => {
+      const box = el("p", { className: "error" },
+        `Couldn't load /results.json (${error.message}). Serve web/ as the site root, ` +
+        "e.g. `python -m http.server -d web`, rather than opening the file directly.");
+      document.getElementById("meta").replaceWith(box);
+    });
+</script>
+</body>
+</html>
