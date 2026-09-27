@@ -155,3 +155,106 @@ def test_tool_called_before_load_raises_file_not_found_error(tmp_path, monkeypat
 
     with pytest.raises(FileNotFoundError):
         mcp_server.get_claim("CL-2001")
+
+
+def test_record_decision_creates_table_and_inserts_row(loaded_db):
+    import sqlite3
+
+    import mcp_server
+
+    mcp_server.record_decision("L-3001", "approve", "2.3")
+
+    with sqlite3.connect(loaded_db) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = [dict(r) for r in conn.execute("SELECT * FROM decisions")]
+
+    assert rows == [{"line_id": "L-3001", "decision": "approve", "clause": "2.3"}]
+
+
+def test_record_decision_is_idempotent_upsert(loaded_db):
+    import sqlite3
+
+    import mcp_server
+
+    mcp_server.record_decision("L-3001", "flag", "1.3")
+    mcp_server.record_decision("L-3001", "approve", "2.3")
+
+    with sqlite3.connect(loaded_db) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = [dict(r) for r in conn.execute("SELECT * FROM decisions")]
+
+    assert rows == [{"line_id": "L-3001", "decision": "approve", "clause": "2.3"}]
+
+
+def test_record_decision_rejects_invalid_decision_value(loaded_db):
+    import mcp_server
+
+    with pytest.raises(ValueError):
+        mcp_server.record_decision("L-3001", "aproved", "2.3")
+
+
+def test_500_gate_is_a_derived_join_not_a_stored_column(loaded_db):
+    """The $500 gate has no dedicated column or tool -- prove it's derivable via a join.
+
+    Uses CL-2001's real line items for the approve-over/at-$500 cases, plus one
+    hand-built reject-over-$500 line item so the "excluded regardless of amount
+    unless decision='approve'" case is deterministic rather than depending on
+    CL-2001 happening to have a second item over $500 (it doesn't).
+    """
+    import sqlite3
+    from decimal import Decimal
+
+    import mcp_server
+
+    claim = mcp_server.get_claim("CL-2001")
+    line_items = claim["line_items"]
+    assert len(line_items) >= 2, "need at least 2 line items on CL-2001 to exercise both sides of the gate"
+
+    over_500 = next(
+        (li for li in line_items if Decimal(li["amount"]) > 500), None
+    )
+    assert over_500 is not None, "expected at least one CL-2001 line item over $500 in the seed data"
+    at_or_under_500 = min(line_items, key=lambda li: Decimal(li["amount"]))
+    assert Decimal(at_or_under_500["amount"]) <= 500
+
+    mcp_server.record_decision(over_500["line_id"], "approve", "2.3")
+    mcp_server.record_decision(at_or_under_500["line_id"], "approve", at_or_under_500["category"])
+    # Hand-built: a rejected decision on an over-$500 line item must not appear
+    # in the gate either -- the gate is decision='approve' AND amount>500, not
+    # just amount>500. line_id doesn't need to exist in line_items for this
+    # SQL-level proof (the join naturally drops it if absent), but for a
+    # cleaner test we point it at a known line item and only vary the decision.
+    mcp_server.record_decision(over_500["line_id"], "reject", "2.3")
+
+    with sqlite3.connect(loaded_db) as conn:
+        conn.row_factory = sqlite3.Row
+        approved = [
+            dict(r)
+            for r in conn.execute(
+                "SELECT d.line_id, li.amount FROM decisions d "
+                "JOIN line_items li ON li.line_id = d.line_id "
+                "WHERE d.decision = 'approve'"
+            )
+        ]
+    pending_ids = {r["line_id"] for r in approved if Decimal(r["amount"]) > 500}
+
+    # over_500's last recorded decision was 'reject' (upsert), so it must not
+    # be pending even though its amount is over $500.
+    assert over_500["line_id"] not in pending_ids
+    assert at_or_under_500["line_id"] not in pending_ids
+
+    # Re-approve it to prove the approve+over-500 case is included.
+    mcp_server.record_decision(over_500["line_id"], "approve", "2.3")
+    with sqlite3.connect(loaded_db) as conn:
+        conn.row_factory = sqlite3.Row
+        approved = [
+            dict(r)
+            for r in conn.execute(
+                "SELECT d.line_id, li.amount FROM decisions d "
+                "JOIN line_items li ON li.line_id = d.line_id "
+                "WHERE d.decision = 'approve'"
+            )
+        ]
+    pending_ids = {r["line_id"] for r in approved if Decimal(r["amount"]) > 500}
+    assert over_500["line_id"] in pending_ids
+    assert at_or_under_500["line_id"] not in pending_ids

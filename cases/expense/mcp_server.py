@@ -10,11 +10,15 @@ DB_PATH = Path(__file__).resolve().parent / "app.db"
 server = FastMCP("expense", log_level="WARNING")
 
 
-def _query(sql: str, *params: str) -> list[dict]:
+def _require_db() -> None:
     if not DB_PATH.exists():
         raise FileNotFoundError(
             "app.db not found. Load the data first: uv run python cases/expense/load_seed.py"
         )
+
+
+def _query(sql: str, *params: str) -> list[dict]:
+    _require_db()
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         return [dict(row) for row in conn.execute(sql, params)]
@@ -55,6 +59,33 @@ def get_policy_limits(level: str, city: str) -> dict:
     if not rows:
         raise ValueError(f"No policy limits for level {level} in {city}")
     return {row["category"]: row["limit_cad"] for row in rows}
+
+
+_VALID_DECISIONS = {"approve", "flag", "reject"}
+
+
+def _ensure_decisions_table(conn: sqlite3.Connection) -> None:
+    conn.execute(
+        "CREATE TABLE IF NOT EXISTS decisions ("
+        "line_id TEXT PRIMARY KEY, decision TEXT, clause TEXT)"
+    )
+
+
+@server.tool()
+def record_decision(line_id: str, decision: str, clause: str) -> dict:
+    """Record one line item's decision and the deciding clause. Upserts on line_id -- calling this again for the same line_id overwrites its prior decision, never appending a duplicate row."""
+    if decision not in _VALID_DECISIONS:
+        raise ValueError(f"decision must be one of {sorted(_VALID_DECISIONS)}, got {decision!r}")
+    _require_db()
+    with sqlite3.connect(DB_PATH) as conn:
+        _ensure_decisions_table(conn)
+        conn.execute(
+            "INSERT INTO decisions (line_id, decision, clause) VALUES (?, ?, ?) "
+            "ON CONFLICT(line_id) DO UPDATE SET decision = excluded.decision, clause = excluded.clause",
+            (line_id, decision, clause),
+        )
+        conn.commit()
+    return {"line_id": line_id, "decision": decision, "clause": clause}
 
 
 if __name__ == "__main__":
