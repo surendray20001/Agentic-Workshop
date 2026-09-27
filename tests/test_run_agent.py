@@ -54,19 +54,19 @@ def _snapshot_decisions(db_path) -> dict[str, tuple[str, str]]:
         }
 
 
-def test_full_run_records_one_decision_per_line_item(loaded_db):
+def test_full_run_records_one_decision_per_line_item(loaded_db, fake_llm):
     import run_agent
 
-    recorded = run_agent.run()
+    recorded = run_agent.run(llm=fake_llm)
 
     assert recorded == 159
     assert len(_snapshot_decisions(loaded_db)) == 159
 
 
-def test_full_run_matches_labelled_set_exactly(loaded_db):
+def test_full_run_matches_labelled_set_exactly(loaded_db, fake_llm):
     import run_agent
 
-    run_agent.run()
+    run_agent.run(llm=fake_llm)
     decisions = _snapshot_decisions(loaded_db)
 
     labels = _read_csv(EVAL_DIR / "labelled.csv")
@@ -80,10 +80,10 @@ def test_full_run_matches_labelled_set_exactly(loaded_db):
     assert mismatches == [], f"{len(mismatches)} mismatches: {mismatches[:5]}"
 
 
-def test_holdout_claims_still_get_decisions(loaded_db):
+def test_holdout_claims_still_get_decisions(loaded_db, fake_llm):
     import run_agent
 
-    run_agent.run()
+    run_agent.run(llm=fake_llm)
     decisions = _snapshot_decisions(loaded_db)
 
     labels = _read_csv(EVAL_DIR / "labelled.csv")
@@ -96,19 +96,19 @@ def test_holdout_claims_still_get_decisions(loaded_db):
         assert line_id in decisions
 
 
-def test_second_run_leaves_decisions_unchanged(loaded_db):
+def test_second_run_leaves_decisions_unchanged(loaded_db, fake_llm):
     import run_agent
 
-    run_agent.run()
+    run_agent.run(llm=fake_llm)
     first = _snapshot_decisions(loaded_db)
 
-    run_agent.run()
+    run_agent.run(llm=fake_llm)
     second = _snapshot_decisions(loaded_db)
 
     assert first == second
 
 
-def test_run_truncates_stale_decisions_before_repopulating(loaded_db):
+def test_run_truncates_stale_decisions_before_repopulating(loaded_db, fake_llm):
     """Proves truncate_decisions() actually matters -- a stale row from a prior
     (e.g. partial/debug) run must not survive a fresh full run."""
     import mcp_server
@@ -122,7 +122,7 @@ def test_run_truncates_stale_decisions_before_repopulating(loaded_db):
         )
         conn.commit()
 
-    run_agent.run()
+    run_agent.run(llm=fake_llm)
 
     assert "LI-STALE-NOT-A-REAL-LINE" not in _snapshot_decisions(loaded_db)
 
