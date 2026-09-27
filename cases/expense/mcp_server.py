@@ -88,5 +88,17 @@ def record_decision(line_id: str, decision: str, clause: str) -> dict:
     return {"line_id": line_id, "decision": decision, "clause": clause}
 
 
+def truncate_decisions() -> None:
+    """Empty the decisions table before a full run, so a re-run never leaves a stale mix (AD-12).
+
+    Not an MCP tool -- called directly by run_agent.py before processing.
+    """
+    _require_db()
+    with sqlite3.connect(DB_PATH) as conn:
+        _ensure_decisions_table(conn)
+        conn.execute("DELETE FROM decisions")
+        conn.commit()
+
+
 if __name__ == "__main__":
     server.run()
