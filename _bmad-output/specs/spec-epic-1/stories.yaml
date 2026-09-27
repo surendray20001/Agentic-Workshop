@@ -1,0 +1,32 @@
+- id: "1-1"
+  title: MCP server - claim context tools
+  description: >-
+    Build get_claim, get_employee, get_policy_limits over a SQLite database
+    loaded from cases/expense/seed/ via load_seed.py (CAP-1). Real data for
+    every later story to build and test against.
+  spec_checkpoint: false
+  done_checkpoint: false
+- id: "1-2"
+  title: Deterministic policy decision engine
+  description: >-
+    Build decision_engine.py implementing POLICY.md's precedence order,
+    per-window aggregation, and duplicate detection (CAP-2, CAP-3, CAP-4) as
+    pure functions, unit-tested against eval/labelled.csv using Story 1-1's
+    real seed data.
+  spec_checkpoint: false
+  done_checkpoint: false
+- id: "1-3"
+  title: Record decisions idempotently, with the $500 gate
+  description: >-
+    Build record_decision as an upsert keyed on line_id (CAP-5). The $500
+    gate (CAP-6) is the AD-9 derived filter over decision+amount - no new
+    schema or column.
+  spec_checkpoint: false
+  done_checkpoint: false
+- id: "1-4"
+  title: Orchestrate a full run over all 40 claims
+  description: >-
+    Wire Stories 1-1 through 1-3 together into a driver that truncates
+    decisions (AD-12) and populates it end to end for all 40 claims.
+  spec_checkpoint: false
+  done_checkpoint: false

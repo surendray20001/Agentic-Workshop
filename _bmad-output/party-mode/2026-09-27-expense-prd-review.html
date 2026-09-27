@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Party Mode — Expense Claim Reviewer PRD Review — 2026-09-27</title>
+<style>
+  :root {
+    --paper: #f6f1e7;
+    --ink: #2b2620;
+    --rule: #d8cdb8;
+    --mary: #a9412c;
+    --john: #2e5e4e;
+    --winston: #35506b;
+    --sally: #a6762f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', serif;
+    padding: 48px 16px 96px;
+  }
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fffdf8;
+    border: 1px solid var(--rule);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    padding: 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sheet::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--mary), var(--john), var(--winston), var(--sally));
+  }
+  h1 {
+    font-size: 1.5em;
+    letter-spacing: 0.02em;
+    margin-bottom: 0;
+  }
+  .meta {
+    color: #8a7f6a;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 32px;
+    font-size: 0.95em;
+  }
+  .cast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+  .badge {
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85em;
+    background: #fbf7ee;
+  }
+  .turn {
+    margin: 0 0 20px;
+    padding-left: 14px;
+    border-left: 3px solid transparent;
+    animation: fadeIn 0.6s ease both;
+  }
+  .turn.mary { border-color: var(--mary); }
+  .turn.john { border-color: var(--john); }
+  .turn.winston { border-color: var(--winston); }
+  .turn.sally { border-color: var(--sally); }
+  .speaker { font-weight: bold; }
+  .turn.mary .speaker { color: var(--mary); }
+  .turn.john .speaker { color: var(--john); }
+  .turn.winston .speaker { color: var(--winston); }
+  .turn.sally .speaker { color: var(--sally); }
+  .stage {
+    font-style: italic;
+    color: #8a7f6a;
+  }
+  .divider {
+    text-align: center;
+    color: #c8bda5;
+    margin: 36px 0;
+    letter-spacing: 0.4em;
+  }
+  .outcomes {
+    background: #fbf7ee;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 8px;
+  }
+  .outcomes h2 {
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0;
+    color: #8a7f6a;
+  }
+  .outcomes ol { padding-left: 20px; }
+  .outcomes li { margin-bottom: 8px; }
+  footer {
+    text-align: center;
+    color: #b3a689;
+    font-size: 0.8em;
+    margin-top: 40px;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .turn { animation-delay: calc(var(--i, 0) * 60ms); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>Party Mode: Reviewing the Expense Claim Reviewer PRD</h1>
+  <div class="meta">27 September 2026 — Mary, John, Winston &amp; Sally, around Surendra's PRD</div>
+
+  <div class="cast">
+    <span class="badge">📊 Mary — Business Analyst</span>
+    <span class="badge">📋 John — Product Manager</span>
+    <span class="badge">🏗️ Winston — System Architect</span>
+    <span class="badge">🎨 Sally — UX Designer</span>
+  </div>
+
+  <p class="stage">Four chairs pulled up around <code>prd.md</code>. Amelia wasn't called this round.</p>
+
+  <div class="turn mary" style="--i:1"><span class="speaker">📊 Mary:</span> Oh, this is clean. Section 7 — you cut the judge. Bold call. But look at Section 2 — two Jobs To Be Done, and neither one is the person who filed the claim. Every stakeholder's supposed to have a voice here. Theirs doesn't even get a Non-Goal.</div>
+
+  <div class="turn john" style="--i:2"><span class="speaker">📋 John:</span> Why does that matter for MVP?</div>
+
+  <div class="turn mary" style="--i:3"><span class="speaker">📊 Mary:</span> Because silence isn't scope discipline — it's an unrepresented stakeholder. Say it out loud and it's a decision. Right now it's just an absence.</div>
+
+  <div class="turn john" style="--i:4"><span class="speaker">📋 John:</span> Fine, noted. Bigger question — you dropped the judge, good, ruthless — so what's FR-6 <em>for</em> now? Nobody's grading the prose. Nobody's reading it in an interface. Who consumes this text?</div>
+
+  <div class="turn sally" style="--i:5"><span class="speaker">🎨 Sally:</span> The reviewer does. That's the whole pitch in UJ-1. Cut FR-6 and they're staring at <code>reject / 5.1</code> with no idea what it means.</div>
+
+  <div class="turn john" style="--i:6"><span class="speaker">📋 John:</span> They're a Finance reviewer. They know their own policy.</div>
+
+  <div class="turn sally" style="--i:7"><span class="speaker">🎨 Sally:</span> Then why does Section 1 say the whole problem is reviewers disagreeing on identical claims? You can't argue they're confused enough to disagree <em>and</em> expert enough to skip the explanation.</div>
+
+  <div class="turn john" style="--i:8"><span class="speaker">📋 John:</span> <span class="stage">(pause)</span> ...That lands. FR-6 stays.</div>
+
+  <div class="turn winston" style="--i:9"><span class="speaker">🏗️ Winston:</span> <span class="stage">(quiet until now, tapping Section 7)</span> Before you two settle that — nobody's looked at what Section 7 doesn't cover at all. SM-1 through SM-3, all scoped to the 30 labelled claims. The holdout — the 10 claims actually scored live at 3:00 — isn't mentioned once. This PRD would call itself 100% successful on a system that's memorized 30 answers and falls over on the 10 that count.</div>
+
+  <div class="turn mary" style="--i:10"><span class="speaker">📊 Mary:</span> Wasn't there a counter-metric for that?</div>
+
+  <div class="turn winston" style="--i:11"><span class="speaker">🏗️ Winston:</span> There was. It got cut in the same pass as the judge. I don't think anyone meant to cut that one.</div>
+
+  <div class="divider">⸻</div>
+
+  <div class="outcomes">
+    <h2>What changed, in order</h2>
+    <ol>
+      <li><strong>SM-C1 restored</strong> — the counter-metric watching the 3:00 holdout, not just the 30 labelled claims. Not eval-checkable; verified live, at the demo.</li>
+      <li><strong>UJ-2 added</strong> — the $500+ approver gets a journey: opens the existing dashboard, sees only what's pending, nothing pays without their sign-off.</li>
+      <li><strong>Section 2.2 Non-Users (v1) added</strong> — claimants named explicitly as unserved in v1, sourced to <code>BRIEF.md</code>. A decision, not an oversight.</li>
+    </ol>
+  </div>
+
+  <div class="turn sally" style="--i:12"><span class="speaker">🎨 Sally:</span> <span class="stage">(grinning, to John)</span> And FR-6 survived.</div>
+  <div class="turn john" style="--i:13"><span class="speaker">📋 John:</span> <span class="stage">(from the doorway)</span> Once.</div>
+
+  <footer>— the room, adjourning —</footer>
+</div>
+</body>
+</html>
