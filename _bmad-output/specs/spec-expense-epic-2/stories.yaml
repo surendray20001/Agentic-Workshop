@@ -1,0 +1,18 @@
+- id: "2-1"
+  title: Generate and trace explanations
+  description: >-
+    Extend run_agent.py with one LLM call per line item after
+    decision_engine.decide_claim runs, producing a clause-citing explanation
+    (CAP-7). Wrap the run in MLflow tracing under the expense-claim-reviewer
+    experiment, distinguishing it from Saturday's traces in the shared store.
+  spec_checkpoint: false
+  done_checkpoint: false
+- id: "2-2"
+  title: Score a run against the labelled set
+  description: >-
+    Build eval/run_eval.py: reads decisions and eval/labelled.csv, checks
+    decision match, clause match, and per-claim reimbursable-total match
+    (CAP-8), reporting pass/fail across the 30 labelled claims via one
+    command. Independent of 2-1 (only needs Epic 1's decisions table).
+  spec_checkpoint: false
+  done_checkpoint: false
