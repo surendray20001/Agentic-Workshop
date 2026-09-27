@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1]
+stepsCompleted: [1, 2]
 inputDocuments: ['_bmad-output/planning-artifacts/prds/prd-Agentic-Workshop-2026-09-27/prd.md', '_bmad-output/planning-artifacts/architecture/architecture-Agentic-Workshop-2026-09-27/ARCHITECTURE-SPINE.md']
 ---
 
@@ -49,8 +49,19 @@ None — no UX design contract exists, and no new interface is in scope for this
 
 ### FR Coverage Map
 
-{{requirements_coverage_map}}
+FR1: Epic 1 - assemble claim context (claim, employee, limits)
+FR2: Epic 1 - decide each line item per POLICY.md precedence + aggregation
+FR3: Epic 1 - detect duplicate line items (5.1)
+FR4: Epic 1 - record decisions idempotently
+FR5: Epic 1 - $500 gate (derived from FR2+FR4, no separate build)
+FR6: Epic 2 - explain each decision, verified by eval
 
 ## Epic List
 
-{{epics_list}}
+### Epic 1: Claim Decisions Recorded
+Every line item across all 40 claims is fetched, decided against POLICY.md (precedence, aggregation, duplicates), and recorded idempotently — with any approved item over $500 visibly distinguishable as pending sign-off. Standalone value: a reviewer can query `decisions` and see every claim resolved correctly, matching the 30 labelled examples.
+**FRs covered:** FR1, FR2, FR3, FR4, FR5
+
+### Epic 2: Explained & Verified Decisions
+Every recorded decision carries a clear, clause-citing explanation, and the eval script proves the whole pipeline against `eval/labelled.csv` — the actual bar for the 3:00 demo. Builds on Epic 1's recorded decisions; delivers the trust and verification layer.
+**FRs covered:** FR6
