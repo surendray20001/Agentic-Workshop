@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # No secrets and no model calls: with the keys empty, the real-API
+      # tests skip and every other test uses a fake LLM.
+      GEMINI_API_KEY: ""
+      GROQ_API_KEY: ""
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install
+        run: uv sync --locked
+
+      - name: Rebuild app.db from the seed CSVs
+        run: uv run python cases/expense/load_seed.py
+
+      - name: Run the tests
+        run: uv run pytest
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # No dependencies to install: the build only validates results.json and
+      # copies the static files into web/dist.
+      - name: Build web/
+        working-directory: web
+        run: npm run build
