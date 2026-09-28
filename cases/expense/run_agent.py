@@ -69,7 +69,8 @@ def _is_groq() -> bool:
 
 def _is_transient(exc: Exception) -> bool:
     message = str(exc).lower()
-    if "quota" in message:  # e.g. Gemini's free-tier daily limit -- won't clear in seconds
+    # Daily limits won't clear in seconds: Gemini's free-tier quota, Groq's tokens-per-day.
+    if "quota" in message or "per day" in message:
         return False
     return any(marker in message for marker in _TRANSIENT_ERROR_MARKERS)
 
@@ -104,12 +105,35 @@ def _get_llm():
     return ChatGoogleGenerativeAI(model=model)
 
 
+def _limit_facts(item: dict, line_items: list[dict], limits_by_city) -> str:
+    """The limit (and, for per-day categories, the day's total) this line was judged against.
+
+    Without it the LLM guesses the over-limit band and can contradict the decision
+    (seen live: a flag explained as "more than 20% over").
+    """
+    if not limits_by_city:
+        return ""
+    limit = limits_by_city.get(item["city"], {}).get(item["category"])
+    if limit is None:
+        return ""
+    facts = f" limit={limit}"
+    if item["category"] in decision_engine._DAY_AGGREGATED_CATEGORIES:
+        day_total = sum(
+            Decimal(other["amount"])
+            for other in line_items
+            if other["category"] == item["category"] and other["date"] == item["date"]
+        )
+        facts += f" day_total={day_total}"
+    return facts
+
+
 def _explain_claim(
-    line_items: list[dict], decisions: dict[str, tuple[str, str]], llm
+    line_items: list[dict], decisions: dict[str, tuple[str, str]], llm, limits_by_city=None
 ) -> dict[str, str]:
     """One LLM call for the whole claim, returning {line_id: explanation}."""
     lines = [
-        f"- line_id={item['line_id']} category={item['category']} amount={item['amount']} "
+        f"- line_id={item['line_id']} category={item['category']} amount={item['amount']}"
+        f"{_limit_facts(item, line_items, limits_by_city)} "
         f"date={item['date']} has_receipt={item['has_receipt']} description={item['description']!r} "
         f"-> decision={decisions[item['line_id']][0]}, clause={decisions[item['line_id']][1]}"
         for item in line_items
@@ -119,6 +143,10 @@ def _explain_claim(
         "Each line item below has already been decided. For each one, write ONE clear sentence "
         "explaining the decision: name the specific fact that drove it (the amount, the limit, "
         "the date gap, the receipt status, etc.) and cite the clause number given. "
+        "Where a limit is given, use it (and day_total for per-day categories) and keep to the "
+        "band the decision implies under 2.4: approve = at or under the limit, flag = over by "
+        "20% or less, reject = more than 20% over. Never state a band or fact that contradicts "
+        "the decision. "
         "Return one explanation per line_id listed. Respond with valid JSON only, in exactly this "
         'shape: {"explanations": [{"line_id": "...", "explanation": "..."}, ...]} -- a top-level '
         'JSON object with a single key "explanations" holding the array. Do not return a bare '
@@ -192,7 +220,7 @@ def run(llm=None) -> int:
             # or any later claim.
             explanation_error = None
             try:
-                explanations = _explain_claim(line_items, decisions, llm)  # not persisted to SQL
+                explanations = _explain_claim(line_items, decisions, llm, limits_by_city)  # not persisted to SQL
             except Exception as exc:
                 explanations = {}
                 explanation_error = str(exc) or type(exc).__name__

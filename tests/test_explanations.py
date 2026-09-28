@@ -257,8 +257,14 @@ def test_per_minute_rate_limit_is_transient_but_daily_quota_is_not():
         "https://ai.google.dev/gemini-api/docs/rate-limits"
     )
 
+    groq_daily = RuntimeError(
+        "Error code: 429 - Rate limit reached for model `openai/gpt-oss-20b` on tokens per day "
+        "(TPD): Limit 200000, Used 199721. Please try again in 7m12.5s."
+    )
+
     assert run_agent._is_transient(groq_tpm)
     assert not run_agent._is_transient(gemini_daily)
+    assert not run_agent._is_transient(groq_daily)
 
 
 def test_explain_claim_fails_fast_on_non_transient_error(monkeypatch):
@@ -467,3 +473,35 @@ def test_run_warns_operator_when_explanation_fails(loaded_db_for_run_agent, caps
 
     stderr = capsys.readouterr().err
     assert stderr.count("no explanations (TimeoutError)") == 40
+
+
+def test_prompt_gives_the_limit_and_day_total_so_the_band_matches_the_decision():
+    import run_agent
+
+    line_items = [
+        {"line_id": "L-1", "claim_id": "CL-X", "date": "2026-08-01", "city": "New York",
+         "category": "hotel", "merchant": "Hotel Co", "amount": "388.70",
+         "has_receipt": "yes", "description": "One night"},
+        {"line_id": "L-2", "claim_id": "CL-X", "date": "2026-08-01", "city": "New York",
+         "category": "meals", "merchant": "Diner", "amount": "40.00",
+         "has_receipt": "yes", "description": "Lunch"},
+        {"line_id": "L-3", "claim_id": "CL-X", "date": "2026-08-01", "city": "New York",
+         "category": "meals", "merchant": "Bistro", "amount": "35.00",
+         "has_receipt": "yes", "description": "Dinner"},
+    ]
+    decisions = {"L-1": ("flag", "2.2"), "L-2": ("flag", "2.1"), "L-3": ("flag", "2.1")}
+    limits = {"New York": {"hotel": Decimal("330"), "meals": Decimal("70")}}
+    prompts = []
+    response = run_agent.ClaimExplanations(explanations=[
+        run_agent.LineExplanation(line_id=lid, explanation=f"Flagged {lid}.") for lid in decisions
+    ])
+
+    class _Capturing:
+        def with_structured_output(self, schema, **kwargs):
+            return type("S", (), {"invoke": lambda self, p: prompts.append(p) or response})()
+
+    run_agent._explain_claim(line_items, decisions, _Capturing(), limits)
+
+    assert "line_id=L-1 category=hotel amount=388.70 limit=330 " in prompts[0]
+    assert "limit=70 day_total=75.00" in prompts[0]
+    assert "flag = over by 20% or less" in prompts[0]
