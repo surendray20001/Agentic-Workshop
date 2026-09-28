@@ -30,3 +30,15 @@
     decisions (AD-12) and populates it end to end for all 40 claims.
   spec_checkpoint: false
   done_checkpoint: false
+- id: "1-5"
+  title: Score recorded decisions against labelled.csv
+  description: >-
+    One command scores the recorded decisions against
+    cases/expense/eval/labelled.csv per line item - decision match and clause
+    match - reporting passed/total and every mismatch (CAP-8, Epic 1 scope).
+  spec_checkpoint: false
+  done_checkpoint: false
+  invoke_dev_with: >-
+    cases/expense/eval/run_eval.py (expense-epic-2 story 2-2) already
+    computes decision and clause match; reuse it rather than writing a
+    second scorer.

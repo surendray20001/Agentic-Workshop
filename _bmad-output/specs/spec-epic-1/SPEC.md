@@ -8,7 +8,7 @@ sources: ["../../planning-artifacts/prds/prd-Agentic-Workshop-2026-09-27/prd.md"
 
 # Epic 1: Claim Decisions Recorded
 
-*Epic 1 of 2 for Case Expenses (Expense Claim Reviewer). Covers CAP-1 through CAP-6 of `SPEC-expense-claim-reviewer` — capability IDs reused, not renumbered, since they are the same capabilities. CAP-7 (explanation) and CAP-8 (eval scoring) belong to Epic 2, not built here.*
+*Epic 1 of 2 for Case Expenses (Expense Claim Reviewer). Covers CAP-1 through CAP-6 of `SPEC-expense-claim-reviewer`, plus CAP-8 scoped to decision and clause match — capability IDs reused, not renumbered, since they are the same capabilities. CAP-7 (explanation) and CAP-8's reimbursable-total check belong to Epic 2.*
 
 ## Why
 
@@ -40,6 +40,10 @@ Finance needs every claim line item decided consistently against `POLICY.md` and
   - **intent:** Any line item decided `approve` with amount over $500 must be identifiable as pending a person's sign-off before it is treated as released for payment (7.1) — per line item, never per claim total.
   - **success:** Every approved line item over $500 is correctly identifiable via a derived filter on the recorded decision; no schema change is needed to find them.
 
+- **CAP-8** (Epic 1 scope: decision and clause match only)
+  - **intent:** Score the recorded decisions against `cases/expense/eval/labelled.csv` with one command: per line item, decision match and clause match, reporting passed/total and every mismatch.
+  - **success:** Across the 30 labelled claims (119 line items), a full run reports 100% on both checks, and a tampered decision or clause is reported as a mismatch.
+
 ## Constraints
 
 - Decision-making is deterministic, not LLM-authored: `decision_engine.py` implements `POLICY.md`'s precedence order in plain code with no branching on specific claim/line/employee ids. The LLM (Epic 2's concern) never picks the decision or clause.
@@ -51,17 +55,18 @@ Finance needs every claim line item decided consistently against `POLICY.md` and
 - Full agent runs truncate `decisions` before starting over all 40 claims; a partial/debug run is not eval-safe.
 - `cases/expense/BRIEF.md`, `POLICY.md`, `seed/*.csv`, and `eval/labelled.csv` are read-only.
 - `cases/expense/INTENT.md` is written before implementation begins, per root `AGENTS.md`'s Sunday rules.
+- The CAP-8 eval is read-only over `cases/expense/app.db` and `labelled.csv`, scores only a complete run (refuses a partial `decisions` table), and must not duplicate an existing scorer — `cases/expense/eval/run_eval.py` already computes decision and clause match.
 
 ## Non-goals
 
-- Explanation text (CAP-7) and eval scoring (CAP-8) — Epic 2's scope, not built here.
+- Explanation text (CAP-7) and CAP-8's per-claim reimbursable-total check — Epic 2's scope, not built here.
 - Actually paying or reimbursing anyone.
 - Emailing employees about their claim decisions.
 - Any interface beyond the existing 3:00 dashboard.
 
 ## Success signal
 
-For all 40 claims, every recorded decision `(line_id, decision, clause)` correctly resolves `POLICY.md`. Against the 30 labelled claims, decision and cited clause match `eval/labelled.csv` exactly on every line item — checkable by direct comparison even before Epic 2's formal eval script exists. Every duplicate pair and every aggregation case resolves correctly. Approve-decisions over $500 are correctly identifiable via the derived filter (no stored gate state needed).
+For all 40 claims, every recorded decision `(line_id, decision, clause)` correctly resolves `POLICY.md`. Against the 30 labelled claims, decision and cited clause match `eval/labelled.csv` exactly on every line item — reported by the CAP-8 eval command. Every duplicate pair and every aggregation case resolves correctly. Approve-decisions over $500 are correctly identifiable via the derived filter (no stored gate state needed).
 
 ## Open Questions
 
