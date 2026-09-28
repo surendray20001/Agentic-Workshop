@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T02:38:16+00:00",
+  "generated_at": "2026-09-28T03:07:46+00:00",
   "summary": {
     "line_items": 159,
     "claims": 40,
@@ -31,12 +31,12 @@
       ]
     },
     "tokens": {
-      "input": 44484,
-      "output": 34549,
-      "total": 79033,
+      "input": 47614,
+      "output": 37013,
+      "total": 84627,
       "traced_claims": 40,
-      "from": "2026-09-27T22:09:11+00:00",
-      "to": "2026-09-28T02:27:37+00:00"
+      "from": "2026-09-28T02:51:01+00:00",
+      "to": "2026-09-28T02:59:25+00:00"
     }
   },
   "items": [
@@ -52,7 +52,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $546.57 is under the $700 limit for flights (clause 2.3).",
+      "reason": "Approved because the flight amount 546.57 is below the limit of 700, per clause 2.3 (2.4).",
       "pending_signoff": true
     },
     {
@@ -67,7 +67,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $187.04 is under the $220 nightly limit (clause 2.2).",
+      "reason": "Approved because the hotel amount 187.04 is below the limit of 220, per clause 2.2 (2.4).",
       "pending_signoff": false
     },
     {
@@ -82,7 +82,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meal cost for the day $41.34 is under the $75 daily limit (clause 2.1).",
+      "reason": "Approved because the meal amount 41.34 is below the daily limit of 75, per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -97,7 +97,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the ground transport cost for the day $25.34 is under the $80 daily limit (clause 6.1).",
+      "reason": "Approved because the ground transport amount 25.34 is below the daily limit of 80, per clause 6.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -112,7 +112,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "The flight cost $795.43, which is under the $900 limit, so it was approved per clause 2.3.",
+      "reason": "Approved because the flight amount $795.43 is below the $900 limit for flights (clause 2.3, 2.4 band approve).",
       "pending_signoff": true
     },
     {
@@ -127,7 +127,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "The hotel cost $217.19, which is under the $247 limit, so it was approved per clause 2.2.",
+      "reason": "Approved because the hotel amount $217.19 is below the $247 limit per night (clause 2.2, 2.4 band approve).",
       "pending_signoff": false
     },
     {
@@ -142,7 +142,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "The meal cost $70.05, which is within the $86 daily limit, so it was approved per clause 2.1.",
+      "reason": "Approved because the total meals amount $70.05 for that day is below the $86 limit (clause 2.1, 2.4 band approve).",
       "pending_signoff": false
     },
     {
@@ -157,7 +157,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "The ground transport cost $53.83, which is within the $95 daily limit, so it was approved per clause 6.1.",
+      "reason": "Approved because the ground transport total $53.83 for that day is below the $95 limit (clause 6.1, 2.4 band approve).",
       "pending_signoff": false
     },
     {
@@ -172,7 +172,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount $375.46 is within the $600 limit for flights, per clause 2.3.",
+      "reason": "Approved because the flight amount of 375.46 is below the flight limit of 600, per clause 2.3.",
       "pending_signoff": false
     },
     {
@@ -187,7 +187,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel amount $171.94 is within the $189 limit for a night, per clause 2.2.",
+      "reason": "Approved because the hotel amount of 171.94 is below the hotel limit of 189, per clause 2.2.",
       "pending_signoff": false
     },
     {
@@ -202,7 +202,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal amount $40.68 is within the $63 daily limit, per clause 2.1.",
+      "reason": "Approved because the meal amount of 40.68 is below the daily meal limit of 63, per clause 2.1.",
       "pending_signoff": false
     },
     {
@@ -217,7 +217,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the ground transport amount $26.23 is within the $84 daily limit, per clause 6.1.",
+      "reason": "Approved because the ground transport amount of 26.23 is below the daily limit of 84, per clause 6.1.",
       "pending_signoff": false
     },
     {
@@ -232,7 +232,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount of $2114.09 is within the $2500 limit for flights, per clause 2.3.",
+      "reason": "Approved because the flight amount of $2114.09 is below the $2500 limit (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -247,7 +247,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel amount of $281.31 is within the $340 limit for the night, per clause 2.2.",
+      "reason": "Approved because the hotel night cost of $281.31 is below the $340 limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -262,7 +262,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal amount of $82.29 is within the $120 daily limit, per clause 2.1.",
+      "reason": "Approved because the meal total of $82.29 for the day is below the $120 limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -277,7 +277,7 @@
       "employee": "Daniel Okafor",
       "decision": "flag",
       "clause": "2.1",
-      "reason": "Flagged because the meal amount of $134.40 exceeds the $120 daily limit by less than 20%, per clause 2.1.",
+      "reason": "Flagged because the meal total of $134.40 exceeds the $120 limit by 12.4% (clause 2.1) and is within the 20% over limit (clause 2.4).",
       "pending_signoff": false
     },
     {
@@ -292,7 +292,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "The flight cost $593.53, which is below the $700 limit for flights, so it was approved under clause 2.3.",
+      "reason": "Approved because the flight amount $593.53 is within the $700 limit (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -307,7 +307,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "The hotel stay cost $168.87, which is below the $209 limit for a night, so it was approved under clause 2.2.",
+      "reason": "Approved because the hotel amount $168.87 is within the $209 limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -322,7 +322,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "The meal cost $37.1, which is within the $71 daily limit for meals, so it was approved under clause 2.1.",
+      "reason": "Approved because the meal amount $37.1 is within the $71 limit for the day (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -337,7 +337,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "The meal cost $102.95, which is more than 20% over the $71 daily limit for meals, so it was rejected under clause 2.1.",
+      "reason": "Rejected because the meal amount $102.95 exceeds the $71 limit by more than 20% (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -352,7 +352,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $686.24 is under the $900 limit for flights (clause 2.3).",
+      "reason": "Approved because the flight cost $686.24 is under the $900 limit (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -367,7 +367,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $241.58 is below the $338 limit for that night (clause 2.2).",
+      "reason": "Approved because the hotel cost $241.58 is under the $338 limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -382,7 +382,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost $64.39 is within the $117 daily limit (clause 2.1).",
+      "reason": "Approved because the total meals cost $64.39 on that day is under the $117 limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -397,7 +397,7 @@
       "employee": "Luca Bianchi",
       "decision": "flag",
       "clause": "2.2",
-      "reason": "Flagged because the hotel cost $388.70 exceeds the $338 limit by less than 20% (difference $50.70, about 15% over) (clause 2.4).",
+      "reason": "Flagged because the hotel cost $388.7 exceeds the $338 limit by less than 20% (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -412,7 +412,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $415.42 is at or under the $600 limit for flights (clause 2.3).",
+      "reason": "Approved because the flight amount $415.42 is under the $600 limit (clause 2.3).",
       "pending_signoff": false
     },
     {
@@ -427,7 +427,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $152.83 is at or under the $180 limit for one night stays (clause 2.2).",
+      "reason": "Approved because the hotel amount $152.83 is under the $180 limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -442,7 +442,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meals for the day amount to $50.5, which is at or under the $60 daily limit (clause 2.1).",
+      "reason": "Approved because the total meals for the day $50.5 is under the $60 limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -457,7 +457,7 @@
       "employee": "Amara Diallo",
       "decision": "reject",
       "clause": "2.2",
-      "reason": "Rejected because the hotel cost $252.00 exceeds the $180 limit by more than 20% (over $216), violating clause 2.2.",
+      "reason": "Rejected because the hotel amount $252.0 exceeds the $180 limit by more than 20% (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -472,7 +472,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "flag",
       "clause": "2.3",
-      "reason": "Amount $770 is 10% above the $700 flight limit, so it is flagged under clause 2.3.",
+      "reason": "Flagged because the flight cost $770 exceeds the $700 limit by 10%, which is within the 20% over limit band (clause 2.3, 2.4).",
       "pending_signoff": false
     },
     {
@@ -487,7 +487,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Amount $232.48 is below the $275 hotel limit, so it is approved under clause 2.2.",
+      "reason": "Approved because the hotel cost $232.48 is below the $275 limit per night (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -502,7 +502,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Total meals $60.25 on that day is below the $94 limit, so it is approved under clause 2.1.",
+      "reason": "Approved because the meal cost $60.25 is below the $94 daily limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -517,7 +517,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Amount $797.77 is under the flight limit of $900, so it is approved (clause 2.3).",
+      "reason": "Approved because the flight cost $797.77 is below the $900 limit (clause 2.3; 2.4 approve)",
       "pending_signoff": true
     },
     {
@@ -532,7 +532,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Amount $194.38 is under the nightly hotel limit of $247, so it is approved (clause 2.2).",
+      "reason": "Approved because the hotel cost $194.38 is below the $247 limit (clause 2.2; 2.4 approve)",
       "pending_signoff": false
     },
     {
@@ -547,7 +547,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Daily meal total $54.96 is below the daily limit of $86, so it is approved (clause 2.1).",
+      "reason": "Approved because the total meals cost $54.96 for the day is below the $86 limit (clause 2.1; 2.4 approve)",
       "pending_signoff": false
     },
     {
@@ -562,7 +562,7 @@
       "employee": "Grace Liu",
       "decision": "reject",
       "clause": "6.1",
-      "reason": "Daily ground transport total $152.00 exceeds the limit of $95 by more than 20%, so it is rejected (clause 6.1).",
+      "reason": "Rejected because the ground transport cost $152.00 exceeds the $95 limit (clause 6.1; 2.4 reject)",
       "pending_signoff": false
     },
     {
@@ -577,7 +577,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $479.31 is below the $600 limit for the trip, per clause 2.3.",
+      "reason": "Approved because the flight cost $479.31 is below the $600 limit per trip (clause 2.3).",
       "pending_signoff": false
     },
     {
@@ -592,7 +592,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $126.20 is below the $171 limit per night, per clause 2.2.",
+      "reason": "Approved because the hotel cost $126.20 is below the $171 nightly limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -607,7 +607,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meal cost for the day is $40.42, below the $57 limit per day, per clause 2.1.",
+      "reason": "Approved because the total meal cost for the day $40.42 is below the $57 daily limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -622,7 +622,7 @@
       "employee": "Noah Tremblay",
       "decision": "reject",
       "clause": "3.1",
-      "reason": "Rejected because alcohol is never reimbursed, per clause 3.1.",
+      "reason": "Rejected because alcohol is never reimbursed (clause 3.1).",
       "pending_signoff": false
     },
     {
@@ -637,7 +637,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $1884.26 is under the $2500 limit (clause 2.3).",
+      "reason": "Approved because the flight cost $1884.26, which is below the $2500 per-trip limit (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -652,7 +652,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel night cost $371.31 is under the $425 limit (clause 2.2).",
+      "reason": "Approved because the hotel cost $371.31, which is below the $425 per-night limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -667,7 +667,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the day's meals total $77.92 is under the $150 limit (clause 2.1).",
+      "reason": "Approved because the meal cost $77.92, which is below the $150 daily limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -682,7 +682,7 @@
       "employee": "Olivia Brown",
       "decision": "reject",
       "clause": "3.2",
-      "reason": "Rejected because personal expenses such as a gym pass are not reimbursable (clause 3.2).",
+      "reason": "Rejected because it is a personal expense (gym pass), which is not reimbursable (clause 3.2).",
       "pending_signoff": false
     },
     {
@@ -697,7 +697,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost 605.21 is below the limit of 700, per clause 2.3.",
+      "reason": "Approved because the flight cost $605.21 is within the $700 limit for flights, per clause 2.3.",
       "pending_signoff": true
     },
     {
@@ -712,7 +712,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost 178.11 is below the nightly limit of 209, per clause 2.2.",
+      "reason": "Approved because the hotel cost $178.11 is within the $209 limit for the night, per clause 2.2.",
       "pending_signoff": false
     },
     {
@@ -727,7 +727,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meals total 60.49 is below the daily limit of 71, per clause 2.1.",
+      "reason": "Approved because the meal amount $60.49 is within the daily limit of $71, per clause 2.1.",
       "pending_signoff": false
     },
     {
@@ -742,7 +742,7 @@
       "employee": "Arjun Mehta",
       "decision": "reject",
       "clause": "3.3",
-      "reason": "Rejected because parking tickets are non\u2011reimbursable, per clause 3.3.",
+      "reason": "Rejected because parking tickets are never reimbursed, per clause 3.3.",
       "pending_signoff": false
     },
     {
@@ -757,7 +757,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $390.58 is within the $700 limit for flights under clause 2.3.",
+      "reason": "Approved because the flight cost $390.58 is below the $700 limit for flights, satisfying clause 2.3 (and within the 2.4 approve band).",
       "pending_signoff": false
     },
     {
@@ -772,7 +772,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $180.98 is within the $220 limit for a single night under clause 2.2.",
+      "reason": "Approved because the hotel cost $180.98 is below the $220 limit for nights, meeting clause 2.2 (and within the 2.4 approve band).",
       "pending_signoff": false
     },
     {
@@ -787,7 +787,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meals for the day amount to $56.96, which is within the $75 daily limit under clause 2.1.",
+      "reason": "Approved because the day's meal total $56.96 is below the $75 limit for meals, meeting clause 2.1 (and within the 2.4 approve band).",
       "pending_signoff": false
     },
     {
@@ -802,7 +802,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "4.1",
-      "reason": "Rejected because software expenses require an IT approval code in the description, which is absent, per clause 4.1.",
+      "reason": "Rejected because the software expense lacks an IT approval code, violating clause 4.1.",
       "pending_signoff": false
     },
     {
@@ -817,7 +817,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount of $526.7 is under the $900 limit (clause 2.3).",
+      "reason": "Approved because the flight cost $526.70 is below the $900 limit (clause 2.3); 2.4 approves at or under limit.",
       "pending_signoff": true
     },
     {
@@ -832,7 +832,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel amount of $263.22 is under the $325 limit (clause 2.2).",
+      "reason": "Approved because the hotel cost $263.22 is below the $325 limit (clause 2.2); 2.4 approves at or under limit.",
       "pending_signoff": false
     },
     {
@@ -847,7 +847,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal total of $66.5 for the day is under the $112 limit (clause 2.1).",
+      "reason": "Approved because the day's meal total $66.50 is below the $112 limit (clause 2.1); 2.4 approves at or under limit.",
       "pending_signoff": false
     },
     {
@@ -862,7 +862,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "4.1",
-      "reason": "Approved because the software description contains IT approval code ITA-4471 (clause 4.1).",
+      "reason": "Approved because the description includes IT approval code ITA-4471, satisfying clause 4.1.",
       "pending_signoff": false
     },
     {
@@ -877,7 +877,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $460.93, which is below the $600 limit per trip (clause 2.3).",
+      "reason": "Approved because the flight cost $460.93 is within the $600 per-trip limit (clause 2.3, 2.4).",
       "pending_signoff": false
     },
     {
@@ -892,7 +892,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $196.87, which is below the $225 limit per night (clause 2.2).",
+      "reason": "Approved because the hotel cost $196.87 is within the $225 per-night limit (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -907,7 +907,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal total for the day is $59.47, which is below the $75 daily limit (clause 2.1).",
+      "reason": "Approved because the total meals cost $59.47 on that day is within the $75 daily limit (clause 2.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -922,7 +922,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "4.1",
-      "reason": "Approved because the description contains the IT approval code ITA-3902 (clause 4.1).",
+      "reason": "Approved because the equipment description contains IT approval code ITA-3902 (clause 4.1).",
       "pending_signoff": false
     },
     {
@@ -937,7 +937,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "The flight cost $1,395.73, which is below the flight limit of $2,500, so it was approved under clause 2.3.",
+      "reason": "Amount $1395.73 is below the flight limit of $2500, so it is approved (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -952,7 +952,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "The hotel cost $258.60, which is below the hotel limit of $340, so it was approved under clause 2.2.",
+      "reason": "Amount $258.6 is below the hotel limit of $340, so it is approved (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -967,7 +967,7 @@
       "employee": "Daniel Okafor",
       "decision": "flag",
       "clause": "2.1",
-      "reason": "The day's total meal expenses of $139.24 exceed the $120 limit by 16.3%, which is within the 20% over\u2011limit band, so the item was flagged under clause 2.1.",
+      "reason": "The day\u2019s meal total of $139.24 exceeds the limit of $120 by 16%, so it is flagged (clause 2.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -982,7 +982,7 @@
       "employee": "Daniel Okafor",
       "decision": "reject",
       "clause": "5.1",
-      "reason": "The item is a duplicate of an earlier entry with the same date, merchant, and amount, so it was rejected under clause 5.1.",
+      "reason": "It is a duplicate of an earlier item with the same date, merchant, and amount, so it is rejected (clause 5.1).",
       "pending_signoff": false
     },
     {
@@ -997,7 +997,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "Item dated 2026-06-14 is more than 60 days before claim submission, violating clause 1.2.",
+      "reason": "Item dated more than 60 days before claim submission date, so rejected per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1012,7 +1012,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "Item dated 2026-06-14 is more than 60 days before claim submission, violating clause 1.2.",
+      "reason": "Item dated more than 60 days before claim submission date, so rejected per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1027,7 +1027,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "Item dated 2026-06-15 is more than 60 days before claim submission, violating clause 1.2.",
+      "reason": "Item dated more than 60 days before claim submission date, so rejected per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1042,7 +1042,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "Item dated 2026-06-15 is more than 60 days before claim submission, violating clause 1.2.",
+      "reason": "Item dated more than 60 days before claim submission date, so rejected per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1057,7 +1057,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $726.27 is at or under the limit of $900, satisfying clause 2.3.",
+      "reason": "Approved because the flight amount $726.27 is at or under the $900 limit for the trip, per clause 2.3 (2.4).",
       "pending_signoff": true
     },
     {
@@ -1072,7 +1072,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $256.90 is at or under the nightly limit of $273, satisfying clause 2.2.",
+      "reason": "Approved because the hotel night cost $256.90 is at or under the $273 limit, per clause 2.2 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1087,7 +1087,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost $76.88 is at or under the daily limit of $94, satisfying clause 2.1.",
+      "reason": "Approved because the total meals cost for the day $76.88 is at or under the $94 limit, per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1102,7 +1102,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the ground transport cost $18.50 is at or under the daily limit of $105, satisfying clause 6.1.",
+      "reason": "Approved because the ground transport total for the day $18.50 is at or under the $105 limit, per clause 6.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1117,7 +1117,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount of $411.51 is at or below the $600 limit for flights (clause 2.3).",
+      "reason": "Approved because the flight cost $411.51 is within the $600 limit for flights (clause 2.3), which is at or under the limit (2.4).",
       "pending_signoff": false
     },
     {
@@ -1132,7 +1132,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel amount of $144.77 is at or below the $180 limit per night (clause 2.2).",
+      "reason": "Approved because the hotel cost $144.77 is within the $180 nightly limit (clause 2.2), at or under the limit (2.4).",
       "pending_signoff": false
     },
     {
@@ -1147,7 +1147,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meals amount of $38.22 for the day is at or below the $60 limit (clause 2.1).",
+      "reason": "Approved because the total meals cost $38.22 for the day is within the $60 daily limit (clause 2.1), at or under the limit (2.4).",
       "pending_signoff": false
     },
     {
@@ -1162,7 +1162,7 @@
       "employee": "Amara Diallo",
       "decision": "flag",
       "clause": "1.3",
-      "reason": "Flagged because the $33.66 ground transport item is over $25 and has no receipt (clause 1.3).",
+      "reason": "Flagged because the ground transport cost $33.66 exceeds $25 and lacks a receipt (clause 1.3).",
       "pending_signoff": false
     },
     {
@@ -1177,7 +1177,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $560, which is within the employee's flight limit for the trip (clause 2.3).",
+      "reason": "Approved because the flight amount $560 is under the $700 limit for flights (clause 2.3, 2.4).",
       "pending_signoff": true
     },
     {
@@ -1192,7 +1192,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $258.79, which is within the employee's nightly hotel limit (clause 2.2).",
+      "reason": "Approved because the hotel amount $258.79 is under the $286 limit for a hotel night (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -1207,7 +1207,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meals cost for 2026-08-12 ($61.71) is within the daily meal limit (clause 2.1).",
+      "reason": "Approved because the meal amount $61.71 is under the $98 limit for meals that day (clause 2.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -1222,7 +1222,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "The flight cost $800.71 and was within the per-trip limit, so it was approved under clause 2.3.",
+      "reason": "The flight cost 800.71, which is below the 900 limit, so approved per clause 2.3 (2.4).",
       "pending_signoff": true
     },
     {
@@ -1237,7 +1237,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "The hotel cost $303.27 for one night and was within the per-night limit, so it was approved under clause 2.2.",
+      "reason": "The hotel cost 303.27, below the 338 nightly limit, so approved per clause 2.2 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1252,7 +1252,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "The meal cost $77.43 and was within the daily meal limit, so it was approved under clause 2.1.",
+      "reason": "The day's meals total 77.43, under the 117 limit, so approved per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1267,7 +1267,7 @@
       "employee": "Grace Liu",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "The meal cost $70.2 exceeded the daily meal limit, so it was rejected under clause 2.1.",
+      "reason": "The day's meals total 142.74 exceeds the 117 limit by more than 20%, so rejected per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1282,7 +1282,7 @@
       "employee": "Grace Liu",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "The meal cost $72.54 exceeded the daily meal limit, so it was rejected under clause 2.1.",
+      "reason": "The day's meals total 142.74 exceeds the 117 limit by more than 20%, so rejected per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1297,7 +1297,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount $369.07 is within the per-trip limit for flights (clause 2.3).",
+      "reason": "Approved because the flight cost $369.07, which is at or under the limit of $600, per clause 2.3 (band 2.4).",
       "pending_signoff": false
     },
     {
@@ -1312,7 +1312,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel stay cost $129.63 is within the per-night limit for hotels (clause 2.2).",
+      "reason": "Approved because the hotel night cost $129.63, which is at or under the limit of $171, per clause 2.2 (band 2.4).",
       "pending_signoff": false
     },
     {
@@ -1327,7 +1327,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal amount $41.46 is within the daily meal limit (clause 2.1).",
+      "reason": "Approved because the meal cost $41.46, which is at or under the limit of $57 for the day, per clause 2.1 (band 2.4).",
       "pending_signoff": false
     },
     {
@@ -1342,7 +1342,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the taxi cost $44.51 is within the daily ground transport limit (clause 6.1).",
+      "reason": "Approved because the ground transport cost $44.51, which is at or under the limit of $76 for the day, per clause 6.1 (band 2.4).",
       "pending_signoff": false
     },
     {
@@ -1357,7 +1357,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost of $2042.20 is within the per\u2011trip flight limit set in clause 2.3.",
+      "reason": "Approved because the flight cost $2042.2, which is below the $2500 limit, per clause 2.3 (2.4 approve band).",
       "pending_signoff": true
     },
     {
@@ -1372,7 +1372,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel stay of $263.21 for one night is within the per\u2011night hotel limit set in clause 2.2.",
+      "reason": "Approved because the hotel cost $263.21, which is below the $340 limit, per clause 2.2 (2.4 approve band).",
       "pending_signoff": false
     },
     {
@@ -1387,7 +1387,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost of $96.57 on 2026\u201108\u201118 is within the daily meal limit set in clause 2.1.",
+      "reason": "Approved because the day's total meals cost $96.57, under the $120 limit, per clause 2.1 (2.4 approve band).",
       "pending_signoff": false
     },
     {
@@ -1402,7 +1402,7 @@
       "employee": "Olivia Brown",
       "decision": "flag",
       "clause": "2.1",
-      "reason": "Flagged because the meal cost of $134.40 on 2026\u201108\u201119 exceeds the daily meal limit by 20% or less, triggering a flag per clause 2.1.",
+      "reason": "Flagged because the day's total meals cost $134.4, which is 12% over the $120 limit, so it falls in the flag band per clause 2.1 (2.4 flag band).",
       "pending_signoff": false
     },
     {
@@ -1417,7 +1417,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight expense of $567.25 is within the flight limit for the trip, per clause 2.3.",
+      "reason": "Approved because the flight cost $567.25 is below the $700 limit for the trip (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -1432,7 +1432,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel expense of $161.41 is within the hotel limit per night, per clause 2.2.",
+      "reason": "Approved because the hotel cost $161.41 is within the $220 limit per night (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -1447,7 +1447,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal expense of $60.42 is within the daily meal limit, per clause 2.1.",
+      "reason": "Approved because the meal cost $60.42 is within the $75 daily limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -1462,7 +1462,7 @@
       "employee": "Arjun Mehta",
       "decision": "flag",
       "clause": "2.2",
-      "reason": "Flagged because the hotel expense of $253.00 exceeds the hotel limit by 20% or less, per clause 2.2.",
+      "reason": "Flagged because the hotel cost $253.00 exceeds the $220 limit by 15% (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -1477,7 +1477,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight is within the per-trip limit for the employee\u2019s level and city, satisfying clause 2.3.",
+      "reason": "Approved because the flight cost $503.52 is below the $700 limit for flights, per clause 2.3 (2.4).",
       "pending_signoff": true
     },
     {
@@ -1492,7 +1492,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel stay is within the per-night limit, satisfying clause 2.2.",
+      "reason": "Approved because the hotel cost $206.05 is below the $220 limit for a night, per clause 2.2 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1507,7 +1507,7 @@
       "employee": "Priya Nair",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal total for that day is within the daily limit, satisfying clause 2.1.",
+      "reason": "Approved because the meal total $60.72 for the day is below the $75 limit, per clause 2.1 (2.4).",
       "pending_signoff": false
     },
     {
@@ -1522,7 +1522,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "3.1",
-      "reason": "Rejected because alcohol is never reimbursed, clause 3.1.",
+      "reason": "Rejected because alcohol is never reimbursed, per clause 3.1.",
       "pending_signoff": false
     },
     {
@@ -1537,7 +1537,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $695.02 is within the flight limit for the employee's level and city (clause\u00a02.3).",
+      "reason": "Approved because the flight amount $695.02 is below the $900 limit (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -1552,7 +1552,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel night cost $291.53 is within the hotel limit for the employee's level and city (clause\u00a02.2).",
+      "reason": "Approved because the hotel amount $291.53 is below the $338 limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -1567,7 +1567,7 @@
       "employee": "Marcus Chen",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "Rejected because the total meals cost for 2026-08-24 exceeded the meal limit, so this meal was over the allowed amount (clause\u00a02.1).",
+      "reason": "Rejected because the meals day total $193.84 exceeds the $117 limit by more than 20% (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -1582,7 +1582,7 @@
       "employee": "Marcus Chen",
       "decision": "reject",
       "clause": "5.1",
-      "reason": "Rejected because it is a duplicate of a previous meal item with the same date, merchant, and amount (clause\u00a05.1).",
+      "reason": "Rejected because it is a duplicate of a previous item with the same date, merchant, and amount (clause 5.1).",
       "pending_signoff": false
     },
     {
@@ -1597,7 +1597,7 @@
       "employee": "Sofia Rossi",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The expense was dated 2026-06-26, which is more than 60 days before the claim submission date, so it was rejected per clause 1.2.",
+      "reason": "The flight dated 2026-06-26 is more than 60 days before the claim submission date, so it was rejected under clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1612,7 +1612,7 @@
       "employee": "Sofia Rossi",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The expense was dated 2026-06-26, which is more than 60 days before the claim submission date, so it was rejected per clause 1.2.",
+      "reason": "The hotel dated 2026-06-26 is more than 60 days before the claim submission date, so it was rejected under clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1627,7 +1627,7 @@
       "employee": "Sofia Rossi",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The expense was dated 2026-06-27, which is more than 60 days before the claim submission date, so it was rejected per clause 1.2.",
+      "reason": "The meal dated 2026-06-27 is more than 60 days before the claim submission date, so it was rejected under clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1642,7 +1642,7 @@
       "employee": "Sofia Rossi",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The expense was dated 2026-06-27, which is more than 60 days before the claim submission date, so it was rejected per clause 1.2.",
+      "reason": "The ground transport dated 2026-06-27 is more than 60 days before the claim submission date, so it was rejected under clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -1657,7 +1657,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $1469.0 is within the per-trip flight limit per the policy, as stated in clause 2.3.",
+      "reason": "Amount 1469.0 is within the $2500 flight limit per trip, so approved per clause 2.3.",
       "pending_signoff": true
     },
     {
@@ -1672,7 +1672,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel stay cost $263.34 is within the per-night hotel limit, per clause 2.2.",
+      "reason": "Amount 263.34 is within the $340 hotel limit per night, so approved per clause 2.2.",
       "pending_signoff": false
     },
     {
@@ -1687,7 +1687,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost $95.78 is within the daily meal limit, per clause 2.1.",
+      "reason": "Amount 95.78 is within the $120 meals limit per day, so approved per clause 2.1.",
       "pending_signoff": false
     },
     {
@@ -1702,7 +1702,7 @@
       "employee": "Daniel Okafor",
       "decision": "flag",
       "clause": "1.3",
-      "reason": "Flagged because the ground transport cost $37.78 exceeds $25 and no receipt was provided, violating clause 1.3.",
+      "reason": "Item over $25 without a receipt flagged for follow-up per clause 1.3.",
       "pending_signoff": false
     },
     {
@@ -1717,7 +1717,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost of $531.77 is within the employee's per\u2011trip limit for the city, per clause 2.3.",
+      "reason": "Approved because the flight amount 531.77 is at or under the limit of 700, per clause 2.3.",
       "pending_signoff": true
     },
     {
@@ -1732,7 +1732,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost of $186.57 is within the per\u2011night limit for the employee's level and city, per clause 2.2.",
+      "reason": "Approved because the hotel amount 186.57 is at or under the limit of 209, per clause 2.2.",
       "pending_signoff": false
     },
     {
@@ -1747,7 +1747,7 @@
       "employee": "Hannah Kim",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost of $43.16 is within the daily meal limit for the employee's level and city, per clause 2.1.",
+      "reason": "Approved because the meal total 43.16 is at or under the daily limit of 71, per clause 2.1.",
       "pending_signoff": false
     },
     {
@@ -1762,7 +1762,7 @@
       "employee": "Hannah Kim",
       "decision": "reject",
       "clause": "4.1",
-      "reason": "Rejected because software expenses require an IT approval code and the description lacks one, per clause 4.1.",
+      "reason": "Rejected because software does not contain an IT approval code, per clause 4.1.",
       "pending_signoff": false
     },
     {
@@ -1777,7 +1777,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight expense of $769.17 falls within the per-trip limit under clause 2.3.",
+      "reason": "Approved because the flight amount $769.17 is below the $900 limit (clause 2.3 and 2.4).",
       "pending_signoff": true
     },
     {
@@ -1792,7 +1792,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel expense of $244.96 is within the per-night limit under clause 2.2.",
+      "reason": "Approved because the hotel amount $244.96 is below the $273 limit (clause 2.2 and 2.4).",
       "pending_signoff": false
     },
     {
@@ -1807,7 +1807,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal expense of $63.56 is within the daily meal limit under clause 2.1.",
+      "reason": "Approved because the meal amount $63.56 is below the $94 limit (clause 2.1 and 2.4).",
       "pending_signoff": false
     },
     {
@@ -1822,7 +1822,7 @@
       "employee": "Luca Bianchi",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the ground transport expense of $52.86 is within the daily ground transport limit under clause 6.1.",
+      "reason": "Approved because the ground transport amount $52.86 is below the $105 limit (clause 6.1 and 2.4).",
       "pending_signoff": false
     },
     {
@@ -1837,7 +1837,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost of $473.57 is within the flight limit for the employee\u2019s level and city (clause 2.3).",
+      "reason": "Approved because the flight amount $473.57 is below the $600 limit under clause 2.3 (2.4 approves at or under the limit).",
       "pending_signoff": false
     },
     {
@@ -1852,7 +1852,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost of $150.83 is within the nightly hotel limit (clause 2.2).",
+      "reason": "Approved because the hotel night cost $150.83 is below the $180 limit under clause 2.2 (2.4 approves at or under the limit).",
       "pending_signoff": false
     },
     {
@@ -1867,7 +1867,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost of $41.71 is within the daily meal limit for that day (clause 2.1).",
+      "reason": "Approved because the day's total meals $41.71 is below the $60 limit under clause 2.1 (2.4 approves at or under the limit).",
       "pending_signoff": false
     },
     {
@@ -1882,7 +1882,7 @@
       "employee": "Amara Diallo",
       "decision": "approve",
       "clause": "6.1",
-      "reason": "Approved because the ground transport cost of $38.41 is within the daily ground transport limit (clause 6.1).",
+      "reason": "Approved because the day's total ground transport $38.41 is below the $80 limit under clause 6.1 (2.4 approves at or under the limit).",
       "pending_signoff": false
     },
     {
@@ -1897,7 +1897,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $420.8 was at or under the per-trip flight limit per clause 2.3.",
+      "reason": "The flight cost $420.8 was under the $700 limit, so it was approved (clause 2.3).",
       "pending_signoff": false
     },
     {
@@ -1912,7 +1912,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $189.27 was at or under the per-night hotel limit per clause 2.2.",
+      "reason": "The hotel cost $189.27 was under the $220 limit, so it was approved (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -1927,7 +1927,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost $52.75 was at or under the daily meal limit per clause 2.1.",
+      "reason": "The meal cost $52.75 was under the $75 daily limit, so it was approved (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -1942,7 +1942,7 @@
       "employee": "Tom\u00e1s Garc\u00eda",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "Rejected because the meal cost $108.75 exceeded the daily meal limit per clause 2.1.",
+      "reason": "The meal amount of $108.75 exceeded the daily limit of $75 by more than 20%, so it was rejected (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -1957,7 +1957,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost of $804.97 is within the employee's flight limit for the trip, per clause 2.3.",
+      "reason": "Approved because the flight cost $804.97 is below the $900 limit (clause 2.3, 2.4).",
       "pending_signoff": true
     },
     {
@@ -1972,7 +1972,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel stay cost of $239.57 is within the per-night limit for hotels, per clause 2.2.",
+      "reason": "Approved because the hotel cost $239.57 is under the $273 limit (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -1987,7 +1987,7 @@
       "employee": "Grace Liu",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal expense of $60.64 falls within the daily meal limit, per clause 2.1.",
+      "reason": "Approved because the meal cost $60.64 is below the daily $94 limit (clause 2.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2002,7 +2002,7 @@
       "employee": "Grace Liu",
       "decision": "reject",
       "clause": "2.2",
-      "reason": "Rejected because the hotel cost of $382.20 exceeds the per-night limit by more than 20%, violating clause 2.2.",
+      "reason": "Rejected because the hotel cost $382.20 exceeds the $273 limit by more than 20% (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2017,7 +2017,7 @@
       "employee": "Noah Tremblay",
       "decision": "flag",
       "clause": "2.3",
-      "reason": "Flagged because the $660 flight cost exceeds the flight limit but is within 20% over the limit, per clause 2.3.",
+      "reason": "The flight cost of $660 exceeds the $600 limit by 10%, so it was flagged under clause 2.3, 2.4.",
       "pending_signoff": false
     },
     {
@@ -2032,7 +2032,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the $141.63 hotel stay is within the nightly limit, per clause 2.2.",
+      "reason": "The hotel cost of $141.63 is below the $171 nightly limit, so it was approved under clause 2.2.",
       "pending_signoff": false
     },
     {
@@ -2047,7 +2047,7 @@
       "employee": "Noah Tremblay",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the $37.87 meal is within the daily meal limit, per clause 2.1.",
+      "reason": "The meal cost of $37.87 is within the $57 daily limit (day total $37.87), so it was approved under clause 2.1.",
       "pending_signoff": false
     },
     {
@@ -2062,7 +2062,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost 1579.24 is within the per-trip limit as per clause 2.3.",
+      "reason": "Approved because the flight cost $1579.24 is within the $2500 per-trip limit (clause\u00a02.3, 2.4).",
       "pending_signoff": true
     },
     {
@@ -2077,7 +2077,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost 293.94 is within the nightly limit as per clause 2.2.",
+      "reason": "Approved because the hotel cost $293.94 is within the $357 per-night limit (clause\u00a02.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2092,7 +2092,7 @@
       "employee": "Olivia Brown",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meals cost 92.38 on that day is within the daily limit as per clause 2.1.",
+      "reason": "Approved because the meal cost $92.38 is within the $126 per-day limit (clause\u00a02.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2107,7 +2107,7 @@
       "employee": "Olivia Brown",
       "decision": "reject",
       "clause": "3.2",
-      "reason": "Rejected because it is a personal expense (gym pass) which is not reimbursable per clause 3.2.",
+      "reason": "Rejected because personal expenses are never reimbursed (clause\u00a03.2).",
       "pending_signoff": false
     },
     {
@@ -2122,7 +2122,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $447.95 is within the per-trip limit for flights (clause 2.3).",
+      "reason": "Approved because the flight cost $447.95 is under the $700 limit for the trip (clause 2.3, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2137,7 +2137,7 @@
       "employee": "Arjun Mehta",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $229.90 is within the per-night limit (clause 2.2).",
+      "reason": "Approved because the hotel cost $229.9 is under the $286 limit for the night (clause 2.2, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2152,7 +2152,7 @@
       "employee": "Arjun Mehta",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "Rejected because the total meal expenses for 2026-08-14 exceeded the daily meal limit (clause 2.1).",
+      "reason": "Rejected because the total meals cost for the day ($136.66) exceeds the $98 limit by more than 20% (clause 2.1, 2.4).",
       "pending_signoff": false
     },
     {
@@ -2167,7 +2167,7 @@
       "employee": "Arjun Mehta",
       "decision": "reject",
       "clause": "5.1",
-      "reason": "Rejected because this item is a duplicate of an earlier item with the same date, merchant, and amount (clause 5.1).",
+      "reason": "Rejected because it is a duplicate of an earlier item with the same date, merchant, and amount (clause 5.1).",
       "pending_signoff": false
     },
     {
@@ -2182,7 +2182,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The flight was dated 2026-06-20, which is more than 60 days before the claim submission date, so it is rejected under clause 1.2.",
+      "reason": "Rejected because it was claimed more than 60 days before submission, per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -2197,7 +2197,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The hotel stay was dated 2026-06-20, which is more than 60 days before the claim submission date, so it is rejected under clause 1.2.",
+      "reason": "Rejected because it was claimed more than 60 days before submission, per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -2212,7 +2212,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The meal was dated 2026-06-21, which is more than 60 days before the claim submission date, so it is rejected under clause 1.2.",
+      "reason": "Rejected because it was claimed more than 60 days before submission, per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -2227,7 +2227,7 @@
       "employee": "Priya Nair",
       "decision": "reject",
       "clause": "1.2",
-      "reason": "The ground transport was dated 2026-06-21, which is more than 60 days before the claim submission date, so it is rejected under clause 1.2.",
+      "reason": "Rejected because it was claimed more than 60 days before submission, per clause 1.2.",
       "pending_signoff": false
     },
     {
@@ -2242,7 +2242,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost $664.06 is at or under the flight limit for the employee\u2019s level and city, per clause 2.3.",
+      "reason": "Approved because the flight amount 664.06 is below the $900 limit for flights (clause 2.3).",
       "pending_signoff": true
     },
     {
@@ -2257,7 +2257,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost $192.49 is at or under the nightly limit for the employee\u2019s level and city, per clause 2.2.",
+      "reason": "Approved because the hotel cost 192.49 is below the $260 nightly limit (clause 2.2).",
       "pending_signoff": false
     },
     {
@@ -2272,7 +2272,7 @@
       "employee": "Marcus Chen",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the total meals cost for the day ($76.90) is at or under the daily meal limit, per clause 2.1.",
+      "reason": "Approved because the meal total for the day is 76.9, which is below the $90 limit (clause 2.1).",
       "pending_signoff": false
     },
     {
@@ -2287,7 +2287,7 @@
       "employee": "Marcus Chen",
       "decision": "flag",
       "clause": "1.3",
-      "reason": "Flagged because the ground transport cost $50.01 exceeds $25 and has no receipt, per clause 1.3.",
+      "reason": "Flagged because the ground transport cost 50.01 exceeds $25 without a receipt (clause 1.3).",
       "pending_signoff": false
     },
     {
@@ -2302,7 +2302,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight cost 505.3, which is within the flight limit per trip (clause 2.3).",
+      "reason": "Approved because the flight amount $505.3 is within the $600 limit (clause 2.3, 2.4)",
       "pending_signoff": true
     },
     {
@@ -2317,7 +2317,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel cost 188.03, which is within the nightly limit (clause 2.2).",
+      "reason": "Approved because the hotel amount $188.03 is within the $234 limit (clause 2.2, 2.4)",
       "pending_signoff": false
     },
     {
@@ -2332,7 +2332,7 @@
       "employee": "Sofia Rossi",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal cost 47.93, which is within the daily meal limit (clause 2.1).",
+      "reason": "Approved because the meals amount $47.93 is within the $78 daily limit (clause 2.1, 2.4)",
       "pending_signoff": false
     },
     {
@@ -2347,7 +2347,7 @@
       "employee": "Sofia Rossi",
       "decision": "reject",
       "clause": "4.1",
-      "reason": "Rejected because the equipment description lacks an IT approval code, violating clause 4.1.",
+      "reason": "Rejected because the equipment description lacks an IT approval code (clause 4.1)",
       "pending_signoff": false
     },
     {
@@ -2362,7 +2362,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.3",
-      "reason": "Approved because the flight amount of $1614.86 was within the flight limit per trip (clause 2.3).",
+      "reason": "Approved because the flight cost $1614.86, which is below the $2500 limit, per clause 2.3 (within the approve band of 2.4).",
       "pending_signoff": true
     },
     {
@@ -2377,7 +2377,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.2",
-      "reason": "Approved because the hotel amount of $261.83 was within the nightly hotel limit (clause 2.2).",
+      "reason": "Approved because the hotel cost $261.83, which is below the $340 limit, per clause 2.2 (within the approve band of 2.4).",
       "pending_signoff": false
     },
     {
@@ -2392,7 +2392,7 @@
       "employee": "Daniel Okafor",
       "decision": "approve",
       "clause": "2.1",
-      "reason": "Approved because the meal amount of $83.42 was within the daily meal limit (clause 2.1).",
+      "reason": "Approved because the meal cost $83.42, which is below the $120 daily limit, per clause 2.1 (within the approve band of 2.4).",
       "pending_signoff": false
     },
     {
@@ -2407,7 +2407,7 @@
       "employee": "Daniel Okafor",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "Rejected because the total meals for 2026-08-23 exceeded the daily meal limit (clause 2.1).",
+      "reason": "Rejected because the total meals for the day ($146.4) exceed the $120 limit by more than 20%, per clause 2.1 (over the limit band of 2.4).",
       "pending_signoff": false
     },
     {
@@ -2422,7 +2422,7 @@
       "employee": "Daniel Okafor",
       "decision": "reject",
       "clause": "2.1",
-      "reason": "Rejected because the total meals for 2026-08-23 exceeded the daily meal limit (clause 2.1).",
+      "reason": "Rejected because the total meals for the day ($146.4) exceed the $120 limit by more than 20%, per clause 2.1 (over the limit band of 2.4).",
       "pending_signoff": false
     }
   ]

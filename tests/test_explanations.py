@@ -505,3 +505,4 @@ def test_prompt_gives_the_limit_and_day_total_so_the_band_matches_the_decision()
     assert "line_id=L-1 category=hotel amount=388.70 limit=330 " in prompts[0]
     assert "limit=70 day_total=75.00" in prompts[0]
     assert "flag = over by 20% or less" in prompts[0]
+    assert "mention 2.4 only in addition to it, never instead of it" in prompts[0]

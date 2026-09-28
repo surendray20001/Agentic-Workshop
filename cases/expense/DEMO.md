@@ -18,7 +18,7 @@ Use `PROVIDER=groq`, because Gemini's free tier allows 20 requests a day and a f
 2. **Epic 1's own check.** `uv run python cases/expense/eval/run_decision_eval.py` shows decision and clause match only.
 3. **The explanations are good.** `uv run python cases/expense/eval/judge_explanations.py` has Groq's `JUDGE_MODEL` rate every explanation for clarity and clause citation. It takes about 7 minutes and 40 calls, so run it before the demo and show the output.
 4. **The dashboard.** `python -m http.server -d web 8000`, then open http://localhost:8000. It shows decision counts, the 25 approvals over $500 awaiting sign-off, the eval score, token usage, a decision filter, and every line's badge, reason and clause.
-5. **The traces.** `uv run mlflow ui --backend-store-uri sqlite:///mlflow.db`, then open the `expense-claim-reviewer` experiment. There is one trace per claim, and its output holds the decisions and the explanations.
+5. **The traces.** `uv run mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5001`, then open http://localhost:5001 and the `expense-claim-reviewer` experiment. Use port 5001, because macOS's AirPlay Receiver holds port 5000. There is one trace per claim, and its output holds the decisions and the explanations.
 
 ## Points worth saying
 
@@ -36,7 +36,9 @@ Use `PROVIDER=groq`, because Gemini's free tier allows 20 requests a day and a f
 | `Cannot judge: … differs from app.db` | The traces are older than `app.db`. Re-run step 2, then the judge. |
 | The dashboard says `Couldn't load /results.json` | Serve `web/` as the site root (step 4); don't open the file directly. |
 
-## Known before the demo (2026-09-27 run)
+## Latest full run (2026-09-27, 19:50)
 
-- Groq's daily token limit for `openai/gpt-oss-20b` (200,000 tokens) ran out during the second full run of the day, and Gemini's 20 free requests were already used. CL-2020 to CL-2040 therefore show explanations from the earlier clean run of the same day. The decisions are identical, so `export_results.py` and the judge accept them.
-- The judge scored clarity 159/159 and clause citation 156/159. L-3016, L-3024 and L-3095 are flagged because their explanations cite the 20%-band rule (2.4) instead of, or as well as, the recorded clause. It is a wording issue; the decisions are correct.
+- All 40 claims were explained in one clean Groq run: no rate-limit warnings and no uncited clauses. Decisions scored 100% (119/119, 119/119, 30/30).
+- The judge scored clarity 159/159 and clause citation 158/159. The one flag, L-3062, is a judgment call: the explanation cites the recorded clause 2.1 (matching the label), and the judge wanted 2.4's 20% band cited as well.
+- Token usage across the 40 traced claims was 84,627.
+- Groq free tier: `openai/gpt-oss-20b` allows 200,000 tokens a day, which is enough for about two full runs. Gemini allows 20 requests a day, which is not enough for one full run.

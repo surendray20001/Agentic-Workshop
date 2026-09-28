@@ -146,7 +146,8 @@ def _explain_claim(
         "Where a limit is given, use it (and day_total for per-day categories) and keep to the "
         "band the decision implies under 2.4: approve = at or under the limit, flag = over by "
         "20% or less, reject = more than 20% over. Never state a band or fact that contradicts "
-        "the decision. "
+        "the decision. Always cite the clause number given for the line as the deciding "
+        "clause; mention 2.4 only in addition to it, never instead of it. "
         "Return one explanation per line_id listed. Respond with valid JSON only, in exactly this "
         'shape: {"explanations": [{"line_id": "...", "explanation": "..."}, ...]} -- a top-level '
         'JSON object with a single key "explanations" holding the array. Do not return a bare '
