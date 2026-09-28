@@ -16,3 +16,18 @@
     command. Independent of 2-1 (only needs Epic 1's decisions table).
   spec_checkpoint: false
   done_checkpoint: false
+- id: "2-3"
+  title: Judge explanations with an LLM judge
+  description: >-
+    One command has JUDGE_MODEL (via Groq) judge every explanation from the
+    latest real run's expense-claim-reviewer traces for clarity and correct
+    clause citation, reporting per-criterion pass counts and each failure
+    (CAP-9). Judges only; decision/clause scoring stays in story 2-2.
+  spec_checkpoint: false
+  done_checkpoint: false
+  invoke_dev_with: >-
+    Story 2-1 found openai/gpt-oss-120b on Groq does not reliably honor
+    forced tool-calling for structured output on long prompts; use
+    method="json_mode" for the judge's structured output.
+    cases/expense/export_results.py already selects the latest real-LLM
+    trace per claim; reuse that selection.
